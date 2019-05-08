@@ -3,7 +3,7 @@
 @section('content')
     <article>
         <header>
-            <h1 class='display-4'> {{ $article->title }} <h1>
+            <h1 class='display-4'> {{ $article->title }} </h1>
         </header>
             
         <section>
