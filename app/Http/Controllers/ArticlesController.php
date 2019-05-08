@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\ArticleQueries;
 use App\Article;
 
 class ArticlesController extends Controller
 {
-    public $articleRepo;
-
-    public function __construct(ArticleQueries $articleRepo){
-        $this->articleRepo = $articleRepo;        
-    }
-    
     public function index() {
-        $articles = $this->articleRepo->getLastArticles();
+        $articles = Article::latest()->limit(15)->get();
         
         return view('articles')->with('articles', $articles);
     }
