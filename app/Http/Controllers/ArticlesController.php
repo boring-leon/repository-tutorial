@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\ArticleQueries;
-use App\Article;
+use App\Repositories\ArticleRepository;
 
 class ArticlesController extends Controller
 {
     public $articleRepo;
 
-    public function __construct(ArticleQueries $articleRepo){
+    public function __construct(ArticleRepository $articleRepo){
         $this->articleRepo = $articleRepo;        
     }
     
@@ -19,7 +18,9 @@ class ArticlesController extends Controller
         return view('articles')->with('articles', $articles);
     }
 
-    public function show(Article $article){  
+    public function show($id){  
+        $article = $this->articleRepo->find($id);
+
         return view('article')->with('article', $article);
     }
 }

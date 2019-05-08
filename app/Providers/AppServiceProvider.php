@@ -18,9 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ArticleQueries::class, CachedArticles::class);
-
-        $this->app->when(CachedArticles::class)->needs(ArticleQueries::class)->give(EloquentArticles::class);
+        //
     }
 
     /**
